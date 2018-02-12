@@ -51,6 +51,10 @@
   },
   "homepage": "https://github.com/PersonalityParagrapher/PersonalityParagrapherBackend#readme",
   "devDependencies": {
+    "dotenv": "^5.0.0",
     "jest": "^22.2.2"
+  },
+  "dependencies": {
+    "watson-developer-cloud": "^3.0.6"
   }
 }
