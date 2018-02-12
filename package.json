@@ -1,0 +1,56 @@
+{
+  "name": "personality-paragrapher",
+  "version": "0.0.0",
+  "description": "Personality Paragrapher for Mid Term Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:watch": "nodemon index.js",
+    "start:debug": "DEBUG=http* nodemon index.js",
+    "test": "jest -i",
+    "test:watch": "jest -i --watchAll",
+    "test:debug": "DEBUG=http* jest -i",
+    "lint": "eslint .",
+    "lint:test": "npm run lint && npm test",
+    "start-db": "mkdir -p ./data/db && mongod --dbpath ./data/db",
+    "stop-db": "killall mongod"
+  },
+  "jest": {
+    "setupFiles": [
+      "./__test__/lib/jest-setup.js"
+    ],
+    "verbose": true,
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageDirectory": "./coverage",
+    "coveragePathIgnorePatterns": [
+      "/__test__/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PersonalityParagrapher/PersonalityParagrapherBackend.git"
+  },
+  "keywords": [
+    "watson",
+    "lyrics",
+    "personality-profiles"
+  ],
+  "author": "Daniel Logerstedt, Melanie Downing, Steve Carpenter, Yohanes Demissie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PersonalityParagrapher/PersonalityParagrapherBackend/issues"
+  },
+  "homepage": "https://github.com/PersonalityParagrapher/PersonalityParagrapherBackend#readme",
+  "devDependencies": {
+    "jest": "^22.2.2"
+  }
+}
