@@ -3,6 +3,7 @@
 
 # User Defined
 **/.test.env
+data/**
 
 ### Linux ###
 *~
