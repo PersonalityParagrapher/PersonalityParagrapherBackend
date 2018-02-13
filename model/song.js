@@ -7,6 +7,7 @@ const Song = mongoose.Schema({
   artist: {type: String, required: true},
   title: {type: String, required: true},
   lyrics: {type: String, required: true},
+  userId: {type: mongoose.Schema.Types.ObjectId, ref: 'auth', required: true},
 });
 
 Song.pre('save', function(next) {
