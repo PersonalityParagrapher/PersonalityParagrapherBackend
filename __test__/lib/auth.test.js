@@ -15,9 +15,9 @@ describe('Auth Module', function () {
     });
     it('Should returh instance of new Auth', () => {
       expect(new Auth(mock)).toHaveProperty('username');
-    })
+    });
     it('Should return an instance of new Auth "password"', () => {
       expect(new Auth(mock)).toHaveProperty('password');
-    })
+    });
   });
 });
