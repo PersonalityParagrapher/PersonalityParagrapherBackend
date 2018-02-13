@@ -21,7 +21,7 @@
     ],
     "verbose": true,
     "testEnvironment": "node",
-    "collectCoverage": false,
+    "collectCoverage": true,
     "coverageDirectory": "./coverage",
     "coveragePathIgnorePatterns": [
       "/__test__/"
