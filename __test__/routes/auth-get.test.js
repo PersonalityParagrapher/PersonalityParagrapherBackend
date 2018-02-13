@@ -45,4 +45,34 @@ describe('GET /api/v1/signup', function() {
         .catch(err => expect(err.status).toBe(401));
     });
   });
+  describe('Invalid Routes/Data', () => {
+    it('Should respond a not found or path error when given an incorrect path', () => {
+      return superagent.get(ENDPOINT_SIGNIN)
+        .send()
+        .catch(err => {
+          expect(err.response.text).toMatch(/Auth/);
+        });
+    });
+    it('Should respond a not found or path error when given an incorrect path', () => {
+      return superagent.get(ENDPOINT_SIGNIN)
+        .auth('', this.response.request._data.password)
+        .catch(err => {
+          expect(err.response.text).toMatch(/Auth/);
+        });
+    });
+    it('Should respond a not found or path error when given an incorrect path', () => {
+      return superagent.get(ENDPOINT_SIGNIN)
+        .auth(this.response.request._data.username, '')
+        .catch(err => {
+          expect(err.response.text).toMatch(/Auth/);
+        });
+    });
+    it('Should respond a not found or path error when given an incorrect path', () => {
+      return superagent.get(ENDPOINT_SIGNIN)
+        .auth(this.response.request._data.username, 'incorrectpassword')
+        .catch(err => {
+          expect(err.response.text).toMatch(/Auth/);
+        });
+    });
+  });
 });
