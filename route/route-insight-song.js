@@ -1,5 +1,5 @@
 'use strict';
 
- module.exports = function(router) {
+module.exports = function(router) {
   router;
- };
+};
