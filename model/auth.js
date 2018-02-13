@@ -6,43 +6,44 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 
 const Auth = mongoose.Schema({
-  username: {type: String, required: true, unique: true},
+  username: {type: String, required: true, unique: true}, //require username/password/email for user signup and compare hash for password protection
   password: {type: String, required: true},
-  email: {type: String, required: true},
-  compareHash: {type: String, unique: true},
-}, {timestamps: true});
+  email: {type: String, require: true},
+  compareHash: {type: String, require: true},
+});
 
+Auth.methods.generatePasswordHash = function (password) {
+  if(!password) return Promise.reject(new Error('Authorization failed.Password required'));
 
-Auth.methods.generatePasswordHash = function(password) {
-  if (!password) return Promise.reject(new Error('Authorization failed. Password required.'));
-
-  return bcrypt.hash(password, 10)
+  return bcrypt.hash(password, 10) //encrypts the password and hashes it 10 times over
     .then(hash => this.password = hash)
     .then(() => this)
     .catch(err => err);
 };
 
-Auth.methods.comparePasswordHash = function(password) {
+Auth.methods.comparePasswordHash = function (password) { //compare the hash to actual passwor when singing in
   return new Promise((resolve, reject) => {
-    bcrypt.compare(password, this.password, (err, valid) => {
-      if (err) return reject(err);
-      if (!valid) return reject(new Error('Authorization failed. Password invalid.'));
+    bcrypt.compare(password, this.password, (error, valid) => {
+      if(error) return reject(error);
+      if(!valid) return reject( new Error('Authorization Failed. Password Invalid'));
       resolve(this);
     });
   });
 };
 
-Auth.methods.generateCompareHash = function() {
-  this.compareHash = crypto.randomBytes(32).toString('hex');
+Auth.methods.generateCompareHash = function () {
+  this.compareHash = crypto.randomBytes(64).toString('hex');
   return this.save()
     .then(() => Promise.resolve(this.compareHash))
-    .catch(() => this.generateCompareHash());
+    .catch(console.error);
 };
 
-Auth.methods.generateToken = function() {
+Auth.methods.generateToken = function () { //allows user access to api/routes once logged in
   return this.generateCompareHash()
-    .then(compareHash => jwt.sign({token: compareHash}, process.env.APP_SECRET))
-    .catch(err => err);
+    .then(compareHash => {
+      return jwt.sign({ token: compareHash}, process.env.APP_SECRET);
+    })
+    .catch(error => error);
 };
 
 module.exports = mongoose.model('auth', Auth);
