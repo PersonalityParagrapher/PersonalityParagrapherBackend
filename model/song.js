@@ -15,6 +15,7 @@ Song.pre('save', function(next) {
   Auth.findById(this.userId)
     .then(user => {
       user.playlist = [...new Set(user.playlist).add(this._id)];
+      user.persona = '';
       user.save();
     })
     .then(next)
@@ -26,6 +27,7 @@ Song.post('remove', function(doc, next) {
   Auth.findById(doc.userId)
     .then(user => {
       user.playlist = user.playlist.filter(v => v.toString() !== doc._id.toString());
+      user.persona = '';
       user.save();
     })
     .then(next)

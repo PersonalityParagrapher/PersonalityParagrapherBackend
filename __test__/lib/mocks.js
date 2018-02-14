@@ -29,7 +29,7 @@ mocks.auth.createOne = () => {
 mocks.auth.removeAll = () => Promise.all([Auth.remove()]);
 
 mocks.song = {};
-mocks.song.createOne = () => {
+mocks.song.createOne = (count) => {
   let resultMock;
 
   // sgc - First create a mock auth (user), then utilize that to create a song
@@ -58,7 +58,7 @@ mocks.song.createOne = () => {
       return new Song({
         artist: faker.name.findName(),
         title: faker.random.word(),
-        lyrics: faker.random.words(20),
+        lyrics: faker.random.words(count),
         userId: user.user._id,
       }).save();
     })
