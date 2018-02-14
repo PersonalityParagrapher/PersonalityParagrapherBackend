@@ -17,7 +17,7 @@ describe('DELETE /api/v1/song/_id?', () => {
 
   describe('Valid', () => {
     it('should return a 204 status (NO CONTENT) on a successful deletion', () => {
-      return mocks.song.createOne()
+      return mocks.song.createOne(10)
         .then(mock => {
           return superagent.delete(`${SONG_ENDPOINT}/${mock.song._id}`)
             .set('Authorization', `Bearer ${mock.token}`);
@@ -28,7 +28,7 @@ describe('DELETE /api/v1/song/_id?', () => {
 
   describe('Invalid', () => {
     it('should return a 404 status (NOT FOUND) with a bad id', () => {
-      return mocks.song.createOne()
+      return mocks.song.createOne(10)
         .then(mock => {
           return superagent.delete(`${SONG_ENDPOINT}/fudgedId`)
             .set('Authorization', `Bearer ${mock.token}`);
@@ -37,7 +37,7 @@ describe('DELETE /api/v1/song/_id?', () => {
     });
 
     it('should return a 401 status (UNAUTHORIZED) with a bad token', () => {
-      return mocks.song.createOne()
+      return mocks.song.createOne(10)
         .then(mock => {
           return superagent.delete(`${SONG_ENDPOINT}/${mock.song._id}`)
             .set('Authorization', 'Bearer BADTOKEN');
@@ -45,7 +45,7 @@ describe('DELETE /api/v1/song/_id?', () => {
         .catch(err => expect(err.status).toBe(401));
     });
     it('should return a 401 status (UNAUTHORIZED) with a bad token', () => {
-      return mocks.song.createOne()
+      return mocks.song.createOne(10)
         .then(songMock => {
           this.songMock = songMock;
           return mocks.auth.createOne()

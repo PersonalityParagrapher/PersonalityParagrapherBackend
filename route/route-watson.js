@@ -10,6 +10,9 @@ module.exports = router => {
       req.user.persona = JSON.stringify(req.watsonData);
       req.user.save()
         .then(() => res.status(200).json(req.watsonData))
-        .catch(err => errorHandler(err, res));
+        .catch(err => {
+          console.log('>>>>>>>>>>>>>>>>>> ERROR <<<<<<<<<<<<<<<<<<', err.message);
+          return errorHandler(err, res);
+        });
     });
 };
