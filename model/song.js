@@ -16,6 +16,7 @@ Song.pre('save', function(next) {
       user.songs = [...new Set(user.songs).add(this._id)];
       user.save();
     })
+    .then(next)
     .catch(() => next(new Error('Validation Error, failed to save song')));
 });
 

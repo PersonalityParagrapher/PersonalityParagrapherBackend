@@ -1,7 +1,7 @@
 'use strict';
 
-// Stdlib modules
-const debug = require('debug');
+// standard lib modules
+const debug = require('debug')('http:route-auth');
 
 // User defined modules
 const Auth = require('../model/auth');
@@ -9,7 +9,7 @@ const bodyParser = require('body-parser').json();
 const errorHandler = require('../lib/error-handler');
 const basicAuth = require('../lib/basic-auth-middleware');
 
-module.exports = function(router) {
+module.exports = router => {
   router.post('/signup', bodyParser, (req, res) => {
     let pw = req.body.password;
     delete req.body.password;
