@@ -14,7 +14,8 @@ const Song = mongoose.Schema({
 Song.pre('save', function(next) {
   Auth.findById(this.userId)
     .then(user => {
-      user.songs = [...new Set(user.songs).add(this._id)];
+      user.playlist = [...new Set(user.playlist).add(this._id)];
+      user.persona = '';
       user.save();
     })
     .then(next)
@@ -25,7 +26,8 @@ Song.post('remove', function(doc, next) {
   debug('in song.post');
   Auth.findById(doc.userId)
     .then(user => {
-      user.songs = user.songs.filter(v => v.toString() !== doc._id.toString());
+      user.playlist = user.playlist.filter(v => v.toString() !== doc._id.toString());
+      user.persona = '';
       user.save();
     })
     .then(next)
