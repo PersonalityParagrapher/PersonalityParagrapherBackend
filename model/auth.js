@@ -9,6 +9,7 @@ const Auth = mongoose.Schema({
   username: {type: String, required: true, unique: true}, //require username/password/email for user signup and compare hash for password protection
   password: {type: String, required: true},
   email: {type: String, require: true},
+  songs: [{type: mongoose.Schema.Types.ObjectId, ref: 'song'}],
   compareHash: {type: String, require: true},
 });
 
