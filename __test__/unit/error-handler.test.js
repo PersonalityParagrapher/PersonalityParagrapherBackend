@@ -1,26 +1,9 @@
 'use strict';
 
-let eH = require('../../lib/error-handler');
+const eH = require('../../lib/error-handler');
+const Res = require('../lib/response');
 require('jest');
 
-
-class Res {
-  constructor(err) {
-    this.error = err;
-    this.code = null;
-    this.message = null;
-  }
-
-  status(code) {
-    this.code = code;
-    return this;
-  }
-
-  send(message) {
-    this.message = message;
-    return this;
-  }
-}
 
 let enoent = new Res(new Error('Authorization Failed'));
 let validation = new Res(new Error('Validation Error'));
