@@ -38,7 +38,7 @@ describe('POST /api/v1/signup', function() {
 
     it('should respond with a 404 status if a fake path is given', () => {
       return superagent.post(`${ENDPOINT_SIGNUP}/fakepath`)
-        .send({username: 'steve', password: 'pass', email: 's@s.com'})
+        .send({username: 'fake-username', password: 'fake-password', email: 'fake-email@s.com'})
         .catch(err => expect(err.status).toBe(404));
     });
 
