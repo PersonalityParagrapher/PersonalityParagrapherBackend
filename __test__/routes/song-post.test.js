@@ -55,6 +55,24 @@ describe('POST /api/v1/song', () => {
         .send({})
         .catch(err => expect(err.status).toEqual(400));
     });
+    it('should return an error for missing artist', () => {
+      return superagent.post(`${SONG_ENDPOINT}`)
+        .set('Authorization', `Bearer ${this.mockUser.token}`)
+        .send({
+          artist: '',
+          song: 'Thriller',
+        })
+        .catch(err => expect(err.status).toEqual(400));
+    });
+    it('should return an error for missing artist', () => {
+      return superagent.post(`${SONG_ENDPOINT}`)
+        .set('Authorization', `Bearer ${this.mockUser.token}`)
+        .send({
+          artist: 'Michael Jackson',
+          song: '',
+        })
+        .catch(err => expect(err.status).toEqual(400));
+    });
   });
 });
 

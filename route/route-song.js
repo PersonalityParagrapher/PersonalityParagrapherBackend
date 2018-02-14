@@ -5,9 +5,8 @@ const bodyParser = require('body-parser').json();
 const errorHandler = require('../lib/error-handler');
 const bearerAuthMiddleware = require('../lib/bearer-auth-middleware');
 const lyricFetcher = require('../lib/lyric-fetcher-middleware');
-const debug = require('debug')('http:route-song');
 
-const ERROR_MESSAGE = 'An Error Occurred';
+const ERROR_MESSAGE = 'Authorization Error';
 
 module.exports = router => {
   router.route('/song/:_id?')
@@ -16,7 +15,6 @@ module.exports = router => {
       return new Song(req.body).save()
         .then(createdSong => res.status(201).json(createdSong))
         .catch(error => {
-          debug('ERR: ', error);
           errorHandler(error, res);
         });
     })
@@ -24,7 +22,7 @@ module.exports = router => {
     .delete(bearerAuthMiddleware, (req, res) => {
       return Song.findById(req.params._id)
         .then(song => {
-          if(song.userId.toString() === req.user._id) {
+          if(song.userId.toString() === req.user._id.toString()) {
             song.remove();
             return res.sendStatus(204);
           }

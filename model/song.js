@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Auth = require('./auth');
+const debug = require('debug')('http:song');
 
 const Song = mongoose.Schema({
   artist: {type: String, required: true},
@@ -21,6 +22,7 @@ Song.pre('save', function(next) {
 });
 
 Song.post('remove', function(doc, next) {
+  debug('in song.post');
   Auth.findById(doc.userId)
     .then(user => {
       user.songs = user.songs.filter(v => v.toString() !== doc._id.toString());

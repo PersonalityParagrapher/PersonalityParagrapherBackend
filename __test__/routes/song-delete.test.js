@@ -39,8 +39,20 @@ describe('DELETE /api/v1/song/_id?', () => {
     it('should return a 401 status (UNAUTHORIZED) with a bad token', () => {
       return mocks.song.createOne()
         .then(mock => {
-          return superagent.put(`${SONG_ENDPOINT}/${mock.song._id}`)
+          return superagent.delete(`${SONG_ENDPOINT}/${mock.song._id}`)
             .set('Authorization', 'Bearer BADTOKEN');
+        })
+        .catch(err => expect(err.status).toBe(401));
+    });
+    it('should return a 401 status (UNAUTHORIZED) with a bad token', () => {
+      return mocks.song.createOne()
+        .then(songMock => {
+          this.songMock = songMock;
+          return mocks.auth.createOne()
+            .then(user => {
+              return superagent.delete(`${SONG_ENDPOINT}/${this.songMock.song._id}`)
+                .set('Authorization', `Bearer ${user.token}`);
+            });
         })
         .catch(err => expect(err.status).toBe(401));
     });
