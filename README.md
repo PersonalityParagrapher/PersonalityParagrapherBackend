@@ -46,10 +46,14 @@ http://<>/personality userId=<userId>
 
 ### Models
 * `auth` - creates a user, hashes the password, stores songs to a 'playlist' array
-
+* `song` - creates a song object with an artist name, song title and lyrics, then related to a user
 
 ### Library
-<!-- Write up of server, error-handler, middleware -->
+* `server` - establishes app setup, hooks up middleware, start and stop server methods
+* `watson` - 
+* `error-handler` - generates error messages based on error object text
+* `basic-auth-middleware` - determines if user is authentic when signing in
+* `bearer-auth-middleware` - determines if user is authorized to perform http requests once signed in, returns a token if user is authorized
 
 ---
 
@@ -60,15 +64,14 @@ http://<>/personality userId=<userId>
 
 ## Collaberators
 Daniel Logerstedt
-* <!-- GitHub/Linked-In -->
+* [GitHub](https://github.com/daniellogerstedt) / [Linked In](https://www.linkedin.com/in/logerstedt/)
 
 Melanie Downing
-* <!-- GitHub/Linked-In -->
+* [GitHub](https://github.com/sayanything830) / [Linked In](https://www.linkedin.com/in/melanie-downing/)
 
 Yohanes Demissie
-* <!-- GitHub/Linked-In -->
+* [GitHub](https://github.com/YohanesDemissie) / [Linked In](https://www.linkedin.com/in/yohanes-demissie-11024a155/)
 
 Steven Carpenter
-* <!-- GitHub/Linked-In -->
-
+* [GitHub](https://github.com/stevegcarpenter) / [Linked In](https://www.linkedin.com/in/carpentersteven/)
 
