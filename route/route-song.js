@@ -1,7 +1,7 @@
 'use strict';
 
 const Song = require('../model/song');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser').json();
 const errorHandler = require('../lib/error-handler');
 const bearerAuthMiddleware = require('../lib/bearer-auth-middleware');
 const lyricFetcher = require('../lib/lyric-fetcher-middleware');
