@@ -1,4 +1,5 @@
 # Personality Paragrapher
+[![Build Status](https://travis-ci.org/PersonalityParagrapher/PersonalityParagrapherBackend.svg?branch=master)](https://travis-ci.org/PersonalityParagrapher/PersonalityParagrapherBackend)
 
 Personality Paragrapher is an application that defines personality traits of a playlist created by a user. The user must create an account and add to a playlist by typing in the artist and song title. When the user performs a `GET` request for their playlist personality, it will return an object with percentages of how the playlist matched on 5 characteristics.
 
@@ -7,29 +8,43 @@ Personality Paragrapher is an application that defines personality traits of a p
 ## Installing and Getting Started
 
 ### Installing
+This application is available without installing the repository by navigating to the [deployed application site](https://personality-paragrapher-prod.herokuapp.com).
+
+If you would prefer to install on your local computer:
+
 Fork and git clone this repository to your local computer, navigate to the root directory of the repository and run `npm i` in the command line, this will install all necessary packages.
 
 ### Getting Started
 
-To sign up:
+Create User/Sign Up:
 
 ```http
-http://<>/signup username=<username> password=<password> email=<email>
+http POST https://personality-paragrapher-prod.herokuapp.com/api/v1/signup username=<username> password=<password> email=<email>
 ```
 
-To sign in:
+User Sign In:
 ```http
-http://<>/signin username=<username> password=<password>
+http -a <username>:<password> GET https://personality-paragrapher-prod.herokuapp.com/api/v1/signin
 ```
 
-To add music to your playlist:
+Add a Song to User Playlist:
 ```http
-http://<>/song artist=<artist name> title=<song title>
+http POST https://personality-paragrapher-prod.herokuapp.com/api/v1/song title='<song title>' artist='<artist>' 'Authorization: Bearer <user token>'
 ```
 
-To get playlist personality:
+Get Songs from Playlist:
 ```http
-http://<>/personality userId=<userId>
+http GET https://personality-paragrapher-prod.herokuapp.com/api/v1/song 'Authorization: Bearer <user token>'
+```
+
+Delete a Song from Playlist:
+```http
+http DELETE https://personality-paragrapher-prod.herokuapp.com/api/v1/song/<song ID> 'Authorization: Bearer <user token>'
+```
+
+Get Personality of Playlist:
+```http
+http GET https://personality-paragrapher-prod.herokuapp.com/api/v1/persona 'Authorization: Bearer <user token>'
 ```
 
 ---
@@ -37,12 +52,14 @@ http://<>/personality userId=<userId>
 ## Data Structures
 
 ### Routes
-* `route-auth` 
+* `route-auth`
   * `POST` request for user sign up
   * `GET` request for user sign in
-* `route-song` 
+* `route-song`
   * `POST` request to add song to playlist once run through `lyric-fetcher` middleware
   * `DELETE` request to delete a song from a playlist and remove its relationship to the user
+* `route-watson`
+  * `GET` request passes playlist lyrics through Watson API and returns the personality insights of the playlist
 
 ### Models
 * `auth` - creates a user, hashes the password, stores songs to a 'playlist' array
@@ -50,7 +67,7 @@ http://<>/personality userId=<userId>
 
 ### Library
 * `server` - establishes app setup, hooks up middleware, start and stop server methods
-* `watson` - 
+* `watson` -
 * `error-handler` - generates error messages based on error object text
 * `basic-auth-middleware` - determines if user is authentic when signing in
 * `bearer-auth-middleware` - determines if user is authorized to perform http requests once signed in, returns a token if user is authorized
@@ -60,9 +77,31 @@ http://<>/personality userId=<userId>
 ## Tests
 <!-- All appropriate 200's and 400's status codes -->
 
+|File                          |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
+|------------------------------|----------|----------|----------|----------|----------------|
+|All files                     |    91.34 |    81.25 |     87.5 |    93.15 |                |
+| lib                          |    90.55 |    78.95 |       90 |    93.28 |                |
+|  basic-auth-middleware.js    |    93.33 |     87.5 |      100 |    93.33 |             13 |
+|  bearer-auth-middleware.js   |    83.33 |     62.5 |       75 |    95.24 |             31 |
+|  error-handler.js            |    90.91 |     87.5 |      100 |    90.91 |             12 |
+|  lyric-fetcher-middleware.js |    83.33 |       75 |      100 |    81.25 |       18,19,23 |
+|  server.js                   |    96.55 |      100 |    85.71 |      100 |                |
+|  watson.js                   |    93.33 |    83.33 |      100 |    92.86 |          42,43 |
+| model                        |    91.49 |    83.33 |    83.33 |    93.02 |                |
+|  auth.js                     |    89.66 |    83.33 |    83.33 |    92.31 |          23,48 |
+|  song.js                     |    94.44 |      100 |    83.33 |    94.12 |             22 |
+| route                        |    92.98 |      100 |    88.46 |    92.98 |                |
+|  route-auth.js               |      100 |      100 |      100 |      100 |                |
+|  route-song.js               |    90.91 |      100 |       80 |    90.91 |          18,26 |
+|  route-watson.js             |       80 |      100 |       75 |       80 |          14,15 |
+
+Test Suites: 9 passed, 9 total
+
+Tests:       42 passed, 42 total
+
 ---
 
-## Collaberators
+## Collaborators
 Daniel Logerstedt
 * [GitHub](https://github.com/daniellogerstedt) / [Linked In](https://www.linkedin.com/in/logerstedt/)
 
