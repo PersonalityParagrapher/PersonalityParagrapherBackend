@@ -16,35 +16,127 @@ Fork and git clone this repository to your local computer, navigate to the root 
 
 ### Getting Started
 
-Create User/Sign Up:
+#### Create User/Sign Up:
 
 ```http
 http POST https://personality-paragrapher-prod.herokuapp.com/api/v1/signup username=<username> password=<password> email=<email>
 ```
 
-User Sign In:
+#### User Sign In:
 ```http
 http -a <username>:<password> GET https://personality-paragrapher-prod.herokuapp.com/api/v1/signin
 ```
 
-Add a Song to User Playlist:
+#### Add a Song to User Playlist:
 ```http
 http POST https://personality-paragrapher-prod.herokuapp.com/api/v1/song title='<song title>' artist='<artist>' 'Authorization: Bearer <user token>'
 ```
 
-Get Songs from Playlist:
+Example:
+```json
+{
+    "_id": "5a85c45125d2fed5ea5fb490",
+    "title": "All Star",
+    "artist": "Smash Mouth",
+    "lyrics": "<Lyrics removed from example to save space>",
+    "userId": "5a85c3cd25d2fed5ea5fb48e",
+    "__v": 0
+}
+```
+
+#### Get Songs from Playlist:
 ```http
 http GET https://personality-paragrapher-prod.herokuapp.com/api/v1/song 'Authorization: Bearer <user token>'
 ```
 
-Delete a Song from Playlist:
+Example:
+```json
+[
+    {
+        "_id": "5a85c41825d2fed5ea5fb48f",
+        "title": "Thriller",
+        "artist": "Michael Jackson",
+        "lyrics": "<Lyrics removed from example to save space>",
+        "userId": "5a85c3cd25d2fed5ea5fb48e",
+        "__v": 0
+    },
+    {
+        "_id": "5a85cf37dfccfbd9758bc8b4",
+        "title": "All Star",
+        "artist": "Smash Mouth",
+        "lyrics": "<Lyrics removed from example to save space>",
+        "userId": "5a85c3cd25d2fed5ea5fb48e",
+        "__v": 0
+    }
+]
+```
+
+#### Delete a Song from Playlist:
 ```http
 http DELETE https://personality-paragrapher-prod.herokuapp.com/api/v1/song/<song ID> 'Authorization: Bearer <user token>'
 ```
 
-Get Personality of Playlist:
+#### Get Personality of Playlist:
 ```http
 http GET https://personality-paragrapher-prod.herokuapp.com/api/v1/persona 'Authorization: Bearer <user token>'
+```
+
+Example of Returned Playlist Personality (condensed):
+```json
+{
+    "word_count": 503,
+    "word_count_message": "There were 503 words in the input. We need a minimum of 600, preferably 1,200 or more, to compute statistically significant estimates",
+    "processed_language": "en",
+    "personality": [
+        {
+            "trait_id": "big5_openness",
+            "name": "Openness",
+            "category": "personality",
+            "percentile": 0.86036219472133,
+            "children": [
+                {
+                    "trait_id": "facet_adventurousness",
+                    "name": "Adventurousness",
+                    "category": "personality",
+                    "percentile": 0.8631363794556252
+                }
+        ]}
+        ],
+    "needs": [
+        {
+            "trait_id": "need_challenge",
+            "name": "Challenge",
+            "category": "needs",
+            "percentile": 0.18020541781633714
+        }
+        ],
+    "values": [
+        {
+            "trait_id": "value_conservation",
+            "name": "Conservation",
+            "category": "values",
+            "percentile": 0.19013852895736638
+        }
+        ],
+    "consumption_preferences": [
+        {
+            "consumption_preference_category_id": "consumption_preferences_shopping",
+            "name": "Purchasing Preferences",
+            "consumption_preferences": [
+                {
+                    "consumption_preference_id": "consumption_preferences_automobile_ownership_cost",
+                    "name": "Likely to be sensitive to ownership cost when buying automobiles",
+                    "score": 0
+                }]
+        }
+        ],
+    "warnings": [
+        {
+            "warning_id": "WORD_COUNT_MESSAGE",
+            "message": "There were 503 words in the input. We need a minimum of 600, preferably 1,200 or more, to compute statistically significant estimates"
+        }
+    ]
+}
 ```
 
 ---
@@ -102,15 +194,37 @@ Tests:       42 passed, 42 total
 ---
 
 ## Collaborators
-Daniel Logerstedt
-* [GitHub](https://github.com/daniellogerstedt) / [Linked In](https://www.linkedin.com/in/logerstedt/)
+### Daniel Logerstedt
 
-Melanie Downing
-* [GitHub](https://github.com/sayanything830) / [Linked In](https://www.linkedin.com/in/melanie-downing/)
+![Daniel Logerstedt](https://avatars0.githubusercontent.com/u/32230987?s=400&v=4)
 
-Yohanes Demissie
-* [GitHub](https://github.com/YohanesDemissie) / [Linked In](https://www.linkedin.com/in/yohanes-demissie-11024a155/)
 
-Steven Carpenter
-* [GitHub](https://github.com/stevegcarpenter) / [Linked In](https://www.linkedin.com/in/carpentersteven/)
+[GitHub](https://github.com/daniellogerstedt) / [Linked In](https://www.linkedin.com/in/logerstedt/)
+
+---
+
+### Melanie Downing
+
+![Melanie Downing](https://avatars2.githubusercontent.com/u/15055004?s=400&u=61c13e0d6c97e85e592f459dc575abcec9b1eacb&v=4)
+
+
+[GitHub](https://github.com/sayanything830) / [Linked In](https://www.linkedin.com/in/melanie-downing/)
+
+---
+
+### Yohanes Demissie
+
+![Yohanes Demisse](https://media-exp2.licdn.com/media/AAMABADGAAwAAQAAAAAAAAx8AAAAJGJkNzY2MWZlLWM3ZTMtNGU2Zi04YWVjLWQzNWE5ZTgzNzQ4MQ.jpg)
+
+
+[GitHub](https://github.com/YohanesDemissie) / [Linked In](https://www.linkedin.com/in/yohanes-demissie-11024a155/)
+
+---
+
+### Steven Carpenter
+
+![Steven Carpenter](https://avatars3.githubusercontent.com/u/14958992?s=400&v=4)
+
+
+[GitHub](https://github.com/stevegcarpenter) / [Linked In](https://www.linkedin.com/in/carpentersteven/)
 
