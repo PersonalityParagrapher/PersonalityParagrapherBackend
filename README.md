@@ -194,37 +194,9 @@ Tests:       42 passed, 42 total
 ---
 
 ## Collaborators
-### Daniel Logerstedt
 
-![Daniel Logerstedt](https://avatars0.githubusercontent.com/u/32230987?s=400&v=4)
-
-
-[GitHub](https://github.com/daniellogerstedt) / [Linked In](https://www.linkedin.com/in/logerstedt/)
-
----
-
-### Melanie Downing
-
-![Melanie Downing](https://avatars2.githubusercontent.com/u/15055004?s=400&u=61c13e0d6c97e85e592f459dc575abcec9b1eacb&v=4)
-
-
-[GitHub](https://github.com/sayanything830) / [Linked In](https://www.linkedin.com/in/melanie-downing/)
-
----
-
-### Yohanes Demissie
-
-![Yohanes Demisse](https://media-exp2.licdn.com/media/AAMABADGAAwAAQAAAAAAAAx8AAAAJGJkNzY2MWZlLWM3ZTMtNGU2Zi04YWVjLWQzNWE5ZTgzNzQ4MQ.jpg)
-
-
-[GitHub](https://github.com/YohanesDemissie) / [Linked In](https://www.linkedin.com/in/yohanes-demissie-11024a155/)
-
----
-
-### Steven Carpenter
-
-![Steven Carpenter](https://avatars3.githubusercontent.com/u/14958992?s=400&v=4)
-
-
-[GitHub](https://github.com/stevegcarpenter) / [Linked In](https://www.linkedin.com/in/carpentersteven/)
+|Daniel Logerstedt  | Melanie Downing | Yohanes Demissie  | Steven Carpenter  |
+|:-----------------:|:---------------:|:-----------------:|:-----------------:|
+|![Daniel Logerstedt](https://avatars0.githubusercontent.com/u/32230987?s=400&v=4) | ![Melanie Downing](https://avatars2.githubusercontent.com/u/15055004?s=400&u=61c13e0d6c97e85e592f459dc575abcec9b1eacb&v=4) | ![Yohanes Demisse](https://media-exp2.licdn.com/media/AAMABADGAAwAAQAAAAAAAAx8AAAAJGJkNzY2MWZlLWM3ZTMtNGU2Zi04YWVjLWQzNWE5ZTgzNzQ4MQ.jpg) | ![Steven Carpenter](https://avatars3.githubusercontent.com/u/14958992?s=400&v=4) |
+| [GitHub](https://github.com/daniellogerstedt) / [Linked In](https://www.linkedin.com/in/logerstedt/) | [GitHub](https://github.com/sayanything830) / [Linked In](https://www.linkedin.com/in/melanie-downing/) | [GitHub](https://github.com/YohanesDemissie) / [Linked In](https://www.linkedin.com/in/yohanes-demissie-11024a155/) | [GitHub](https://github.com/stevegcarpenter) / [Linked In](https://www.linkedin.com/in/carpentersteven/) |
 
