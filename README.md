@@ -1,7 +1,7 @@
 # Personality Paragrapher
 [![Build Status](https://travis-ci.org/PersonalityParagrapher/PersonalityParagrapherBackend.svg?branch=master)](https://travis-ci.org/PersonalityParagrapher/PersonalityParagrapherBackend)
 
-Personality Paragrapher is an application that defines personality traits of a playlist created by a user. The user must create an account and add to a playlist by typing in the artist and song title. When the user performs a `GET` request for their playlist personality, it will return an object with percentages of how the playlist matched on 5 characteristics.
+Personality Paragrapher is RESTful API that defines personality traits of a playlist created by a user. The user must create an account and add to a playlist by typing in the artist and song title. When the user performs a `GET` request for their playlist personality, it will return an object with percentages of how the playlist matched on 5 characteristics.
 
 ---
 
@@ -142,6 +142,8 @@ Example of Returned Playlist Personality (condensed):
 ---
 
 ## Data Structures
+
+![diagram](./diagram/post-diagram.png)
 
 ### Routes
 * `route-auth`
