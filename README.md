@@ -29,7 +29,7 @@ http -a <username>:<password> GET https://personality-paragrapher-prod.herokuapp
 
 #### Add a Song to User Playlist:
 ```http
-http POST https://personality-paragrapher-prod.herokuapp.com/api/v1/song title='<song title>' artist='<artist>' 'Authorization: Bearer <user token>'
+http POST https://personality-paragrapher-prod.herokuapp.com/api/v1/song title='<song title>' artist='<artist>' 'Authorization:Bearer <user token>'
 ```
 
 Example:
@@ -46,7 +46,7 @@ Example:
 
 #### Get Songs from Playlist:
 ```http
-http GET https://personality-paragrapher-prod.herokuapp.com/api/v1/song 'Authorization: Bearer <user token>'
+http GET https://personality-paragrapher-prod.herokuapp.com/api/v1/song 'Authorization:Bearer <user token>'
 ```
 
 Example:
@@ -73,12 +73,12 @@ Example:
 
 #### Delete a Song from Playlist:
 ```http
-http DELETE https://personality-paragrapher-prod.herokuapp.com/api/v1/song/<song ID> 'Authorization: Bearer <user token>'
+http DELETE https://personality-paragrapher-prod.herokuapp.com/api/v1/song/<song ID> 'Authorization:Bearer <user token>'
 ```
 
 #### Get Personality of Playlist:
 ```http
-http GET https://personality-paragrapher-prod.herokuapp.com/api/v1/persona 'Authorization: Bearer <user token>'
+http GET https://personality-paragrapher-prod.herokuapp.com/api/v1/persona 'Authorization:Bearer <user token>'
 ```
 
 Example of Returned Playlist Personality (condensed):
@@ -167,7 +167,6 @@ Example of Returned Playlist Personality (condensed):
 ---
 
 ## Tests
-<!-- All appropriate 200's and 400's status codes -->
 
 |File                          |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
 |------------------------------|----------|----------|----------|----------|----------------|
