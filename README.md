@@ -67,10 +67,10 @@ http GET https://personality-paragrapher-prod.herokuapp.com/api/v1/persona 'Auth
 
 ### Library
 * `server` - establishes app setup, hooks up middleware, start and stop server methods
-* `watson` -
+* `watson` - populates the user's playlist with songs added by user, collects all lyrics from each song and passes through Watson Personality Insights API
 * `error-handler` - generates error messages based on error object text
-* `basic-auth-middleware` - determines if user is authentic when signing in
-* `bearer-auth-middleware` - determines if user is authorized to perform http requests once signed in, returns a token if user is authorized
+* `basic-auth-middleware` - determines if user is authentic when signing in and provides a token
+* `bearer-auth-middleware` - determines if user is authorized to perform http requests when signed in, returns a token if user is authorized
 
 ---
 
