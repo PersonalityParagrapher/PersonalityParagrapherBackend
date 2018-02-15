@@ -1,6 +1,7 @@
 'use strict';
 
 const Song = require('../model/song');
+const Auth = require('../model/auth');
 const bodyParser = require('body-parser').json();
 const errorHandler = require('../lib/error-handler');
 const bearerAuthMiddleware = require('../lib/bearer-auth-middleware');
@@ -10,6 +11,13 @@ const ERROR_MESSAGE = 'Authorization Error';
 
 module.exports = router => {
   router.route('/song/:_id?')
+    .get(bearerAuthMiddleware, (req, res) => {
+      Auth.findById(req.user._id)
+        .populate('playlist')
+        .then(user => res.status(200).json(user.playlist))
+        .catch(err => errorHandler(err, res));
+    })
+
     .post(bearerAuthMiddleware, bodyParser, lyricFetcher, (req, res) => {
       req.body.userId = req.user._id;
       return new Song(req.body).save()
