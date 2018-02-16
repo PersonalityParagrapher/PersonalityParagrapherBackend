@@ -166,31 +166,6 @@ Example of Returned Playlist Personality (condensed):
 * `basic-auth-middleware` - determines if user is authentic when signing in and provides a token
 * `bearer-auth-middleware` - determines if user is authorized to perform http requests when signed in, returns a token if user is authorized
 
----
-
-## Tests
-
-|File                          |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
-|------------------------------|----------|----------|----------|----------|----------------|
-|All files                     |    91.34 |    81.25 |     87.5 |    93.15 |                |
-| lib                          |    90.55 |    78.95 |       90 |    93.28 |                |
-|  basic-auth-middleware.js    |    93.33 |     87.5 |      100 |    93.33 |             13 |
-|  bearer-auth-middleware.js   |    83.33 |     62.5 |       75 |    95.24 |             31 |
-|  error-handler.js            |    90.91 |     87.5 |      100 |    90.91 |             12 |
-|  lyric-fetcher-middleware.js |    83.33 |       75 |      100 |    81.25 |       18,19,23 |
-|  server.js                   |    96.55 |      100 |    85.71 |      100 |                |
-|  watson.js                   |    93.33 |    83.33 |      100 |    92.86 |          42,43 |
-| model                        |    91.49 |    83.33 |    83.33 |    93.02 |                |
-|  auth.js                     |    89.66 |    83.33 |    83.33 |    92.31 |          23,48 |
-|  song.js                     |    94.44 |      100 |    83.33 |    94.12 |             22 |
-| route                        |    92.98 |      100 |    88.46 |    92.98 |                |
-|  route-auth.js               |      100 |      100 |      100 |      100 |                |
-|  route-song.js               |    90.91 |      100 |       80 |    90.91 |          18,26 |
-|  route-watson.js             |       80 |      100 |       75 |       80 |          14,15 |
-
-Test Suites: 9 passed, 9 total
-
-Tests:       42 passed, 42 total
 
 ---
 
